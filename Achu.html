@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Achu!</title>
+    <style>
+        body {
+            font-family: 'Arial, sans-serif';
+            background: linear-gradient(135deg, #ffc2f0, #d8b8f3);
+            margin: 0;
+            padding: 0;
+            color: #5a026a;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        header {
+            background: #ff80c0;
+            padding: 20px;
+            color: white;
+            font-size: 2.5em;
+            position: relative;
+            overflow: hidden;
+        }
+        header::after {
+            content: "🎉";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            font-size: 5em;
+            animation: spin 5s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        section {
+            padding: 20px;
+        }
+        .highlight {
+            color: #ff80c0;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background: #d959a3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.1);
+            background: #ff80c0;
+        }
+        .hidden-section {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f3d3f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .confetti {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .confetti div {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            background: white;
+            opacity: 0.8;
+            animation: fall 4s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>🎂 Happy Birthday Achu! 🎂</header>
+
+    <section id="welcome">
+        <h2>Welcome, <span class="highlight">Achu</span>!</h2>
+        <p>Today, we celebrate the amazing YOU! Ready for a little fun?</p>
+        <button onclick="revealMessage()">Click for a Surprise</button>
+    </section>
+
+    <section id="hidden-message" class="hidden-section">
+        <h3>🎁 Your Special Message 🎁</h3>
+        <p>Dear Achu,</p>
+        <p>You bring so much joy to everyone around you. I hope this year is filled with love, laughter, and endless blessings. 💕</p>
+        <button onclick="startConfetti()">Let’s Celebrate!</button>
+    </section>
+
+    <div class="confetti" id="confetti"></div>
+
+    <script>
+        function revealMessage() {
+            const messageSection = document.getElementById("hidden-message");
+            messageSection.style.display = "block";
+        }
+
+        function startConfetti() {
+            const confettiContainer = document.getElementById("confetti");
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement("div");
+                confettiPiece.style.left = Math.random() * 100 + "vw";
+                confettiPiece.style.animationDelay = Math.random() * 2 + "s";
+                confettiPiece.style.background = randomColor();
+                confettiContainer.appendChild(confettiPiece);
+            }
+        }
+
+        function randomColor() {
+            const colors = ["#ff80c0", "#d8b8f3", "#ffc2f0", "#f8a9d4"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>
